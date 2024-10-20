@@ -1,0 +1,7 @@
+<h1>Insert Record</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p>vector must be a comma separated list of 3 floats</p>
+    <button type="submit">Save</button>
+</form>

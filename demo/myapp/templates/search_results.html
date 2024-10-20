@@ -1,0 +1,30 @@
+<h1>Search Records</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+</form>
+
+<h2>Search Results</h2>
+<table style="text-align: left;">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Text</th>
+            <th>Vector</th>
+            <th>Distance</th>
+            <th>Similarity Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for result in results %}
+        <tr>
+            <td>{{ result.id }}</td>
+            <td>{{ result.text }}</td>
+            <td>{{ result.vector }}</td>
+            <td>{% if result.distance != null %}{{ result.distance }}{% endif %}</td>
+            <td>{% if result.similarity != null %}{{ result.similarity }}{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
